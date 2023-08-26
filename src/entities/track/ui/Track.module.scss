@@ -1,0 +1,21 @@
+.track {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    font-family: var(--main-font);
+    font-size: 0.9rem;
+}
+
+.trackInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    margin-left: 12px;
+}
+
+.trackAuthorName {
+    color: rgba(0, 0, 0, 0.6)
+}
