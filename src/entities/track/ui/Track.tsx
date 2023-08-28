@@ -17,7 +17,7 @@ const Track: React.FC<TrackProps> = ({trackData}) => {
 
   // remove all unnecessary zeros
   for(let i = 0; i < formatedTrackDuration.length; i++) {
-    if(formatedTrackDuration[i] != '0' && formatedTrackDuration[i] != ':') {
+    if(formatedTrackDuration[i] !== '0' && formatedTrackDuration[i] !== ':') {
       formatedTrackDuration = formatedTrackDuration.slice(i)
       break
     }
