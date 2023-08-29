@@ -1,0 +1,1 @@
+export const getTrack = (state: RootState) => state.tracks

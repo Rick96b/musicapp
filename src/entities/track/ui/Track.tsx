@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './Track.module.scss'
-import { TrackType } from '../model/trackModel';
+import {TrackType} from '../model/types'
 import BaseAvatar from 'shared/ui/BaseTrackLogo';
 
 

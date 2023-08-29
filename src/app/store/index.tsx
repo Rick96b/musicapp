@@ -4,6 +4,6 @@ import { trackModel } from "entities/track";
 
 export const store = configureStore({
   reducer: {
-    tasks: trackModel.reducer,
+    tracks: trackModel.reducer,
   },
 });

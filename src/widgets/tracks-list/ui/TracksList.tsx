@@ -1,10 +1,10 @@
 import React from 'react'
 
 import styles from './TracksList.module.scss';
-import { Track, trackModel } from 'entities/track';
+import { Track, trackTypes } from 'entities/track';
 
 interface TracksListProps {
-    tracksData: trackModel.TrackType[]
+    tracksData: trackTypes.TrackType[]
 }
 
 const TracksList: React.FC<TracksListProps> = ({tracksData}) => {
