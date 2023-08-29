@@ -7,7 +7,7 @@ export type TrackType = {
     trackLink: string;
 }
 
-export type ActiveTrackType = TrackType & {
-    completedDurationInSeconds: number;
-    isPlaying: boolean;
+export type ActiveTrackType = Partial<TrackType> & {
+    completedDurationInSeconds?: number;
+    isPlaying?: boolean;
 }

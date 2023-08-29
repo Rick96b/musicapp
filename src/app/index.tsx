@@ -3,12 +3,16 @@ import { withProviders } from "./providers";
 
 import { Routing } from 'pages';
 import './styles/index.scss';
-import friends from 'shared/friends.mp3'
+import TrackHandler from './trackHandler';
 
 
 function App() {
   return (
-    <Routing />
+    <>
+      <Routing />
+      <TrackHandler />
+    </>
+
   );
 }
 
