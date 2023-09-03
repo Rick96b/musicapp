@@ -1,0 +1,19 @@
+.trackPLayer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: var(--main-font);
+    text-align: center;
+    font-size: 0.8rem;
+
+    cursor: pointer;
+}
+
+.name {
+    font-size: 0.9em;
+}
+
+.authorName {
+    font-size: 0.8em;
+}

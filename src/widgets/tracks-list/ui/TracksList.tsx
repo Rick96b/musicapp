@@ -12,9 +12,11 @@ const TracksList: React.FC<TracksListProps> = ({tracksData}) => {
   return (
     <ul className={styles.trackList}>
       {tracksData.map(track => 
-        <ToggleTrack trackData={track}>
-          <Track trackData={track} />
-        </ToggleTrack>
+        <li className={styles.trackContainer}>
+          <ToggleTrack trackData={track}>
+            <Track trackData={track} />
+          </ToggleTrack>
+        </li>
       )}
     </ul>
   )
