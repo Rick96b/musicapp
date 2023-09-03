@@ -6,10 +6,10 @@ import { ActiveTrackType, TrackType } from "./types";
 
 const initialState: {
     tracks: TrackType[]
-    activeTrack: ActiveTrackType
+    activeTrack: ActiveTrackType | null
 } = {
     tracks: [],
-    activeTrack: {}
+    activeTrack: null
 }
 
 export const tracksModel = createSlice({
@@ -20,14 +20,19 @@ export const tracksModel = createSlice({
             state.tracks = tracks
         },
         setActiveTrack: (state, {payload: trackId}: PayloadAction<number>) => {
-            state.activeTrack = {
-                ...state.tracks.find(track => track.id === trackId),
-                isPlaying: true,
-                durationInSeconds: 0,
-            }
+            const currentTrack = state.tracks.find(track => track.id === trackId) 
+            if(currentTrack)
+                state.activeTrack = {
+                    ...currentTrack,
+                    isPlaying: true,
+                    completedDurationInSeconds: 0,
+                }
+            else    
+                console.log('There is no appropriate track in tracks list')
         },
         toggleActiveTrack: ({activeTrack}) => {
-            activeTrack.isPlaying = !activeTrack.isPlaying
+            if(activeTrack) activeTrack.isPlaying = !activeTrack.isPlaying
+            else console.log('There is no active track')
         }
     },
 })
