@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import friends from 'shared/assets/friends.mp3';
 import weather from 'shared/assets/weather.mp3'
+import { TrackPlayer } from 'widgets/track-player';
 import { TracksList } from 'widgets/tracks-list';
 
 const HomePage = () => {
@@ -30,6 +31,7 @@ const HomePage = () => {
   return (
     <div>
         <TracksList tracksData={trackData} />
+        <TrackPlayer />
     </div>
   )
 }

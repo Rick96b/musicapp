@@ -1,0 +1,1 @@
+export {default as TrackPlayer} from './ui/TrackPlayer/TrackPlayer'
