@@ -3,16 +3,11 @@ import { withProviders } from "./providers";
 
 import { Routing } from 'pages';
 import './styles/index.scss';
-import TrackHandler from './trackHandler';
 
 
 function App() {
   return (
-    <>
-      <Routing />
-      <TrackHandler />
-    </>
-
+    <Routing />
   );
 }
 

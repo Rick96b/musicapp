@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { trackModel, trackSelectors, trackTypes } from 'entities/track';
+import { trackTypes } from 'entities/track';
+import { playerModel, playerSelectors } from 'entities/player';
 
 import styles from './ToggleTrack.module.scss';
 
@@ -10,15 +11,20 @@ interface ToggleTrackProps {
 }
 
 const ToggleTrack: React.FC<ToggleTrackProps> = ({children, trackData}) => {
-    const activeTrack = useSelector(trackSelectors.getActiveTrack);
+    const activeTrack = useSelector(playerSelectors.getActiveTrack);
     const dispatch = useDispatch();
 
     const handleClick = () => {
 
-        if(activeTrack?.id !== trackData.id) {
-            dispatch(trackModel.setActiveTrack(trackData.id))
+        if(!activeTrack || activeTrack.id !== trackData.id) {
+            dispatch(playerModel.setActiveTrack(
+                {
+                    ...trackData,
+                    isPlaying: true,
+                }
+            ))
         } else {
-            dispatch(trackModel.toggleActiveTrack())
+            dispatch(playerModel.toggleActiveTrack())
         }
     }
 

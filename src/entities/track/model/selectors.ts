@@ -1,6 +1,2 @@
-import { createSelector } from "reselect";
+export const createGetTrackSelector = (id: number) => (state: RootState) => state.tracks.tracks.find(track => track.id === id)
 
-export const getActiveTrack = createSelector(
-    (state: RootState) => state.tracks.activeTrack,
-    (activeTrack: RootState['tracks']['activeTrack']) => activeTrack
-)
