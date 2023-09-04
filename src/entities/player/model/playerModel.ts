@@ -20,11 +20,14 @@ export const activeTrackModel = createSlice({
         toggleActiveTrack: ({activeTrack}) => {
             if(activeTrack) activeTrack.isPlaying = !activeTrack.isPlaying
             else console.log('There is no active track')
-        }
+        },
+        removeActiveTrack: (state) => {
+            state.activeTrack = null
+        },
     },
 })
 
-export const {setActiveTrack, toggleActiveTrack} = activeTrackModel.actions;
+export const {setActiveTrack, toggleActiveTrack, removeActiveTrack} = activeTrackModel.actions;
 
 export const reducer = activeTrackModel.reducer
 

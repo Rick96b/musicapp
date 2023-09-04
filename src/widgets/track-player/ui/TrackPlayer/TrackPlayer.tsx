@@ -59,6 +59,11 @@ const TrackPlayer: React.FC = () => {
     audioTune.volume = event.target.value / 100;
   }
 
+  const handleCloseTrack = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    dispatch(playerModel.removeActiveTrack())
+  }
+
   if(activeTrack) {
     return (
       <>
@@ -75,7 +80,7 @@ const TrackPlayer: React.FC = () => {
             <span className={styles.name}>{activeTrack.name}</span>
             <span className={styles.authorName}>{activeTrack.authorName}</span>
           </p>
-          <IconButton>
+          <IconButton onClick={handleCloseTrack}>
             <CloseOutlinedIcon />
           </IconButton>
         </article>
