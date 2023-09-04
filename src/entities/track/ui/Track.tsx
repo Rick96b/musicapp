@@ -23,6 +23,7 @@ const Track: React.FC<TrackProps> = ({trackData}) => {
     }
   }
 
+
   return (
     <article className={styles.track}>
         <div className={styles.trackAvatarContainer}>

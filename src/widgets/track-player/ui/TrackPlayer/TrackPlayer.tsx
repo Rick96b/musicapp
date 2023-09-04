@@ -8,8 +8,6 @@ import styles from './TrackPlayer.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import TrackPlayerModal from '../TrackPlayerModal/TrackPlayerModal';
 import { playerModel, playerSelectors } from 'entities/player';
-import friends from 'shared/assets/friends.mp3'
-import weather from 'shared/assets/weather.mp3'
 
 let audioTune: HTMLAudioElement = new Audio();
 audioTune.volume = 0.3;
@@ -21,8 +19,6 @@ const TrackPlayer: React.FC = () => {
 
   const activeTrack = useSelector(playerSelectors.getActiveTrack)
   const dispatch = useDispatch()
-
-  console.log(duration)
 
   const handleToggleTrack = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -43,8 +39,7 @@ const TrackPlayer: React.FC = () => {
 
   useEffect(() => {
     if(activeTrack) {
-      const file = activeTrack.name === 'friends' ? friends : weather
-      audioTune.setAttribute("src", file);
+      audioTune.setAttribute("src", activeTrack.trackLink);
       audioTune.load();
       audioTune.play();
     }

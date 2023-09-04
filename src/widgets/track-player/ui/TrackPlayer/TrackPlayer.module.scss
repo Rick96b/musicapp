@@ -15,6 +15,11 @@
     cursor: pointer;
 }
 
+.trackInfo {
+    display: flex;
+    flex-direction: column;
+}
+
 .name {
     font-size: 0.9em;
 }

@@ -5,6 +5,9 @@
 
     padding: 20px;
 
+    font-family: var(--main-font);
+    font-size: 0.8rem;
+
     border-radius: 16px;
     background-color: #fff;
 
@@ -19,4 +22,10 @@
 
     border-radius: 20px;
     outline: none;
+}
+
+.trackInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
