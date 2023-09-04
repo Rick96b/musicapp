@@ -2,28 +2,23 @@ import { IconButton } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 
 import styles from './TrackPlayer.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import TrackPlayerModal from '../TrackPlayerModal/TrackPlayerModal';
 import { playerModel, playerSelectors } from 'entities/player';
+import useAudio from '../../hooks/useAudio';
 
-let audioTune: HTMLAudioElement = new Audio();
-audioTune.volume = 0.3;
+
 
 const TrackPlayer: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [duration, setDuration] = useState(audioTune.currentTime);
-  const [volume, setVolume] = useState(audioTune.volume * 100);
-
   const activeTrack = useSelector(playerSelectors.getActiveTrack)
-  const dispatch = useDispatch()
 
-  const handleToggleTrack = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    dispatch(playerModel.toggleActiveTrack())
-  }
+  const {duration, volume, handleVolumeChanges, handleDurationChanges} = useAudio({activeTrack})
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const dispatch = useDispatch()
 
   const handleModalClose = () => {
     setModalOpen(false)
@@ -33,35 +28,14 @@ const TrackPlayer: React.FC = () => {
     setModalOpen(true)
   }
 
-  const handleChange = (event: any) => {
-    audioTune.currentTime = event.target.value
-  }
-
-  useEffect(() => {
-    if(activeTrack) {
-      audioTune.setAttribute("src", activeTrack.trackLink);
-      audioTune.load();
-      audioTune.play();
-    }
-  }, [activeTrack?.id])
-
-  useEffect(() => {
-    if(activeTrack?.isPlaying) audioTune.play();
-    else audioTune.pause();
-  }, [activeTrack?.isPlaying])
-
-  audioTune.addEventListener('timeupdate', ()=> {
-    setDuration(audioTune.currentTime)
-  })
-
-  const handleVolumeChanges = (event: any) => {
-    setVolume(event.target.value)
-    audioTune.volume = event.target.value / 100;
-  }
-
   const handleCloseTrack = (event: React.MouseEvent) => {
     event.stopPropagation();
     dispatch(playerModel.removeActiveTrack())
+  }
+
+  const handleToggleTrack = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    dispatch(playerModel.toggleActiveTrack())
   }
 
   if(activeTrack) {
@@ -88,9 +62,9 @@ const TrackPlayer: React.FC = () => {
           open={modalOpen} 
           handleClose={handleModalClose} 
           activeTrack={activeTrack}
-          duration={audioTune.currentTime}
+          duration={duration}
           volume={volume}
-          handleDurationChanges={handleChange}
+          handleDurationChanges={handleDurationChanges}
           handleVolumeChanges={handleVolumeChanges}
           handleToggleTrack={handleToggleTrack}
         />

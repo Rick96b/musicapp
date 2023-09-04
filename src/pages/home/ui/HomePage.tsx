@@ -1,6 +1,6 @@
-import { trackFetchers, trackModel, trackTypes } from 'entities/track';
+import { trackModel } from 'entities/track';
 import { fetchAllTracks } from 'entities/track/api/fetchers';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux';
 import { TrackPlayer } from 'widgets/track-player';
 import { TracksList } from 'widgets/tracks-list';
@@ -13,9 +13,6 @@ const HomePage = () => {
   if(data) {
     dispatch(trackModel.setTracks(data))
   }
- 
-
-  console.log(data)
 
   return (
     <div>
