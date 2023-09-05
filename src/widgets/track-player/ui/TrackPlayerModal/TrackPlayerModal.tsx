@@ -5,11 +5,14 @@ import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import Slider from '@mui/material/Slider';
 import classNames from 'classnames'
 
 import styles from './TrackPlayerModal.module.scss';
 import { playerTypes } from 'entities/player';
+import { formatDuration } from 'shared/utils/formatDuration';
 
 interface TrackPlayerModalProps {
     open: boolean;
@@ -52,22 +55,42 @@ const TrackPlayerModal:React.FC<TrackPlayerModalProps> = ({
                         <FavoriteIcon />
                     </IconButton>
                 </div>
-                <Slider 
-                    value={duration}
-                    aria-label="duration"
-                    valueLabelDisplay="off" 
-                    size='small'
-                    onChange={handleDurationChanges}
-                    max={activeTrack.durationInSeconds}
-                />
-                <IconButton className={styles.toggleButton} sx={{color: '#fff', fontSize: "62px"}} onClick={handleToggleTrack}>
-                {
-                    activeTrack.isPlaying ?
-                    <PauseCircleFilledIcon sx={{fontSize: 'inherit'}}/>
-                    :
-                    <PlayCircleIcon sx={{fontSize: 'inherit'}}/>
-                }
-                </IconButton>
+                <div className={styles.sliderContainer}>
+                    <Slider 
+                        value={duration}
+                        aria-label="duration"
+                        valueLabelDisplay="off" 
+                        size='small'
+                        onChange={handleDurationChanges}
+                        max={activeTrack.durationInSeconds}
+                        sx={{
+                            color: '#fff'
+                        }}
+                    />
+                    <span>
+                        {formatDuration(duration)}
+                    </span>
+                    <span style={{marginLeft: "auto"}}>
+                        {formatDuration(activeTrack.durationInSeconds - duration)}
+                    </span>
+                </div>
+                <div className={styles.buttonsContainer}>
+                    <IconButton className={styles.skipPreviousButton}>
+                        <SkipPreviousIcon sx={{font: 'inherit'}} />
+                    </IconButton>
+                    <IconButton className={styles.toggleButton}onClick={handleToggleTrack}>
+                    {
+                        activeTrack.isPlaying ?
+                        <PauseCircleFilledIcon sx={{font: 'inherit'}}/>
+                        :
+                        <PlayCircleIcon sx={{font: 'inherit'}}/>
+                    }
+                    </IconButton>
+                    <IconButton className={styles.skipNextButton}>
+                        <SkipNextIcon sx={{font: 'inherit'}}/>
+                    </IconButton>
+                </div>
+                
                 {/* <Slider 
                     value={volume}
                     aria-label="duration"

@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './Track.module.scss'
 import {TrackType} from '../model/types'
 import BaseAvatar from 'shared/ui/BaseTrackLogo';
+import { formatDuration } from 'shared/utils/formatDuration';
 
 
 interface TrackProps {
@@ -10,19 +11,7 @@ interface TrackProps {
 }
 
 const Track: React.FC<TrackProps> = ({trackData}) => {
-
-  let formatedTrackDuration = new Date(trackData.durationInSeconds * 1000)
-  .toISOString()
-  .slice(11, 19);
-
-  // remove all unnecessary zeros
-  for(let i = 0; i < formatedTrackDuration.length; i++) {
-    if(formatedTrackDuration[i] !== '0' && formatedTrackDuration[i] !== ':') {
-      formatedTrackDuration = formatedTrackDuration.slice(i)
-      break
-    }
-  }
-
+  const formatedTrackDuration = formatDuration(trackData.durationInSeconds);
 
   return (
     <article className={styles.track}>

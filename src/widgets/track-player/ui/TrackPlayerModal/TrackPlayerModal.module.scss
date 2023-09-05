@@ -62,3 +62,28 @@
     font-size: 0.9em;
 }
 
+.sliderContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 10px 0;
+
+    width: 100%;
+
+    font-size: 0.8em;
+}
+
+.toggleButton {
+    font-size: 63px !important;
+    color: #fff !important
+}
+
+.skipPreviousButton {
+    font-size: 35px !important;
+    color: #fff !important
+}
+
+.skipNextButton {
+    font-size: 35px !important;
+    color: #fff  !important; 
+}
