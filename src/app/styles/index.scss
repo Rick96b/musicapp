@@ -1,2 +1,7 @@
 @import './reset';
 @import './vars';
+
+body {
+    height: 100svh;
+    width: 100svw;
+}
