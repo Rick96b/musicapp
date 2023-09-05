@@ -1,10 +1,12 @@
 import React from 'react'
-import Modal from '@mui/material/Modal';
-import { IconButton } from '@mui/material'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
+import { Slide, IconButton } from '@mui/material'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Slider from '@mui/material/Slider';
-
+import classNames from 'classnames'
 
 import styles from './TrackPlayerModal.module.scss';
 import { playerTypes } from 'entities/player';
@@ -31,21 +33,25 @@ const TrackPlayerModal:React.FC<TrackPlayerModalProps> = ({
     volume}) => {
 
     return (
-        <Modal
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            open={open}
-            onClose={handleClose} 
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <Slide in={open} direction='up' mountOnEnter unmountOnExit>
             <div 
-                className={styles.container}
+                className={classNames(styles.container, open ? styles.containerOpen : '')}
             >
+                <div className={styles.headerContainer}>
+                    <IconButton sx={{color: '#fff', fontSize: '23px'}} onClick={handleClose}>
+                        <KeyboardArrowDownIcon sx={{fontSize: 'inherit'}}/>
+                    </IconButton>
+                </div>
                 <img src={activeTrack.avatarLink} alt='logo' className={styles.logo}/>
+                <div className={styles.topContainer}>
+                    <p className={styles.trackInfo}>
+                        <span className={styles.name}>{activeTrack.name}</span>
+                        <span className={styles.authorName}>{activeTrack.authorName}</span>
+                    </p>
+                    <IconButton>
+                        <FavoriteIcon />
+                    </IconButton>
+                </div>
                 <Slider 
                     value={duration}
                     aria-label="duration"
@@ -54,28 +60,24 @@ const TrackPlayerModal:React.FC<TrackPlayerModalProps> = ({
                     onChange={handleDurationChanges}
                     max={activeTrack.durationInSeconds}
                 />
-                <p className={styles.trackInfo}>
-                    <span className={styles.name}>{activeTrack.name}</span>
-                    <span className={styles.authorName}>{activeTrack.authorName}</span>
-                </p>
-                <IconButton className={styles.toggleButton} onClick={handleToggleTrack}>
+                <IconButton className={styles.toggleButton} sx={{color: '#fff', fontSize: "62px"}} onClick={handleToggleTrack}>
                 {
                     activeTrack.isPlaying ?
-                    <PauseOutlinedIcon />
+                    <PauseCircleFilledIcon sx={{fontSize: 'inherit'}}/>
                     :
-                    <PlayArrowIcon />
+                    <PlayCircleIcon sx={{fontSize: 'inherit'}}/>
                 }
                 </IconButton>
-                <Slider 
+                {/* <Slider 
                     value={volume}
                     aria-label="duration"
                     valueLabelDisplay="off" 
                     size='small'
                     max={100}
                     onChange={(event) => handleVolumeChanges(event)}
-                />
+                /> */}
             </div>
-        </Modal>
+        </Slide>
     )
 }
 

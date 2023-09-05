@@ -1,31 +1,64 @@
 .container {
-    display: inline-flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 100vw;
+    height: 100vh;
 
     padding: 20px;
 
     font-family: var(--main-font);
-    font-size: 0.8rem;
+    font-size: 1rem;
 
-    border-radius: 16px;
-    background-color: #fff;
+    background-color: var(--black-theme-main);
 
     &:focus-visible {
         outline: none;
     }
+
+    color: #fff;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: flex-start;
+
+    width: 100%;
 }
 
 .logo {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 366px;
 
-    border-radius: 20px;
-    outline: none;
+    margin-top: 60px;
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 24px;
 }
 
 .trackInfo {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
+
+.name {
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.authorName {
+    font-size: 0.9em;
+}
+
