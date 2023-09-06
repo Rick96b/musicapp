@@ -1,0 +1,1 @@
+export const getActiveUser = (state: RootState) => state.user.user;

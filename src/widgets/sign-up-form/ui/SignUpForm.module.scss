@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 100%;
+}
+
+.textField {
+    color: #fff !important;
+
+    label {
+        color: #fff !important;
+        font-family: var(--main-font);
+
+        &[data-shrink=true] {
+            color: #57B560 !important;
+        }
+    }
+
+    div {
+        border-bottom: #fff !important;
+
+        &:hover:not(.Mui-disabled, .Mui-error):before {
+            border-bottom: #fff 2px solid !important;
+        }
+
+        &::before {
+            border-bottom: #fff 2px solid;
+        }
+        &::after {
+            border-bottom: #57B560 2px solid;
+        }
+    }
+
+    input {
+        color: #57B560 !important;
+    }
+}

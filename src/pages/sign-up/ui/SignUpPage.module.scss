@@ -1,0 +1,28 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100%;
+
+    padding: 30px;
+
+    font-size: 1rem;
+    font-family: var(--main-font);
+
+    background-color: #121212;
+}
+
+.title {
+    margin-bottom: 20px;
+
+    font-size: 1.5em;
+    color: #57B560;
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 350px;
+}
