@@ -6,7 +6,6 @@ export const formatDuration = (timeInSeconds: number) => {
     // remove all unnecessary zeros
     for(let i = 0; i < formatedDuration.length - 3; i++) {
       if((formatedDuration[i] !== '0' && formatedDuration[i] !== ':') || i === (formatedDuration.length - 4)) {
-        console.log(formatedDuration)
         formatedDuration = formatedDuration.slice(i)
         break
       }

@@ -1,1 +1,1 @@
-export * as firebase from './config';
+export * as firebase from './config'

@@ -7,6 +7,7 @@ interface useAudioProps {
 
 let audioTune: HTMLAudioElement = new Audio();
 audioTune.volume = 0.3;
+audioTune.onabort = (event) => event.preventDefault;
 
 const useAudio = ({activeTrack}: useAudioProps) => {
     const [duration, setDuration] = useState(audioTune.currentTime);
@@ -16,12 +17,14 @@ const useAudio = ({activeTrack}: useAudioProps) => {
         if(activeTrack) {
             audioTune.setAttribute("src", activeTrack.trackLink);
             audioTune.load();
-            audioTune.play();
+            audioTune.play().catch(error => console.log(error));
+        } else {
+            audioTune.setAttribute("src", '');;
         }
     }, [activeTrack?.id])
 
     useEffect(() => {
-        if(activeTrack?.isPlaying) audioTune.play();
+        if(activeTrack?.isPlaying) audioTune.play().catch(error => console.log(error));
         else audioTune.pause();
     }, [activeTrack?.isPlaying])
 

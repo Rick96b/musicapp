@@ -41,8 +41,8 @@ const TrackPlayerModal:React.FC<TrackPlayerModalProps> = ({
                 className={classNames(styles.container, open ? styles.containerOpen : '')}
             >
                 <div className={styles.headerContainer}>
-                    <IconButton sx={{color: '#fff', fontSize: '23px'}} onClick={handleClose}>
-                        <KeyboardArrowDownIcon sx={{fontSize: 'inherit'}}/>
+                    <IconButton className={styles.backButton} onClick={handleClose}>
+                        <KeyboardArrowDownIcon sx={{font: 'inherit'}}/>
                     </IconButton>
                 </div>
                 <img src={activeTrack.avatarLink} alt='logo' className={styles.logo}/>
