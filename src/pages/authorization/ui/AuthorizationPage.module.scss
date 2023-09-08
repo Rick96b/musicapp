@@ -1,9 +1,7 @@
-.pageContainer {
+.formsContainer {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     min-height: 100%;
 
@@ -13,6 +11,18 @@
     font-family: var(--main-font);
 
     background-color: #121212;
+    overflow: hidden;
+}
+
+.signUpContainer,
+.signInContainer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 500px;
 }
 
 .title {
