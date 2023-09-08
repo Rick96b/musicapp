@@ -1,6 +1,5 @@
-import { userSelectors } from "entities/user";
+import { useAuthUser } from "entities/user";
 import { lazy } from "react";
-import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 const HomePage = lazy(() => import("./home").then((module) => ({ default: module.HomePage })));
@@ -8,11 +7,16 @@ const SignUpPage = lazy(() => import("./sign-up").then((module) => ({ default: m
 
 
 export const Routing = () => {
-    const user = useSelector(userSelectors.getActiveUser);
+    const [activeUser, loading] = useAuthUser();
+
+    console.log(loading)
+    if(loading) return <></>
+
+
     return (
         <>
             { 
-                user 
+                activeUser 
                 ?
                 <Routes>
                     <Route path='/' element={<HomePage />} />

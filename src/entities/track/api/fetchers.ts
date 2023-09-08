@@ -1,4 +1,4 @@
-import { set, ref, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 import { firebase } from "shared/api/firebase"
 import { TrackType } from "../model/types";
 

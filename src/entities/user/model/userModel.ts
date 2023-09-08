@@ -14,10 +14,12 @@ export const activeTrackModel = createSlice({
     name: "user",
     initialState,
     reducers: {
-       
+        setActiveUser: (state, {payload: user}: PayloadAction<User>) => {
+            state.user = user;
+        }
     },
 })
 
-export const {} = activeTrackModel.actions;
+export const {setActiveUser} = activeTrackModel.actions;
 
 export const reducer = activeTrackModel.reducer
