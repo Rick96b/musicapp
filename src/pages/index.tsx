@@ -3,15 +3,13 @@ import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
 const HomePage = lazy(() => import("./home").then((module) => ({ default: module.HomePage })));
-const SignUpPage = lazy(() => import("./sign-up").then((module) => ({ default: module.SignUpPage })));
+const AuthorizationPage = lazy(() => import("./authorization").then((module) => ({ default: module.AuthorizationPage })));
 
 
 export const Routing = () => {
     const [activeUser, loading] = useAuthUser();
 
-    console.log(loading)
     if(loading) return <></>
-
 
     return (
         <>
@@ -24,7 +22,7 @@ export const Routing = () => {
                 </Routes>
                 :
                 <Routes>
-                    <Route path='/' element={<SignUpPage />} />
+                    <Route path='/' element={<AuthorizationPage />} />
                 </Routes>
             }   
         </>   
