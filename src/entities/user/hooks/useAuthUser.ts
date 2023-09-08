@@ -6,7 +6,6 @@ import { User } from '../model/types'
 
 const useAuthUser = () => {
     const [user, loading, error] = useAuthState(auth)
-    console.log(user, loading)
     const [activeUserloading, setActiveUserloading] = useState(true);
     const [activeUser, setActiveUser] = useState<User | null>(null);
  

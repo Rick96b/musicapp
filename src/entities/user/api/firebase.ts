@@ -28,3 +28,7 @@ export const signUpUser = async (user: User) => {
         return {...user, id: userCredentials.user.uid}
     })
 }
+
+export const signInUser = async (user: User) => {
+    return signInWithEmailAndPassword(auth, user.email, user.password)
+}

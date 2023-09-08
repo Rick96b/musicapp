@@ -14,6 +14,10 @@ const AuthorizationPage = () => {
     userApi.signUpUser(user);
   }
 
+  const handleLogInSubmit = (user: userTypes.User) => {
+    userApi.signInUser(user);
+  }
+
   return (
     <div className={styles.formsContainer}>
       <Slide direction="right" in={isSignUpVisible} mountOnEnter unmountOnExit>
@@ -29,7 +33,7 @@ const AuthorizationPage = () => {
         <div className={styles.signInContainer}>
           <h2 className={styles.title}>Sign in</h2>
           <div className={styles.formContainer}>
-            <SingInForm handleSubmit={handleRegistrationSubmit}/>  
+            <SingInForm handleSubmit={handleLogInSubmit}/>  
           </div>
           <button style={{color: '#fff'}} onClick={() => setIsSignUpVisible(!isSignUpVisible)}>next</button>
         </div>
