@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from 'shared/api/firebase/config'
 import { getUser } from '../api/firebase'
 import { User } from '../model/types'
 
-const useAuthUser = () => {
-    const [user, loading, error] = useAuthState(auth)
+const useAuthUser = (): [User | null, boolean] => {
+    const [user, loading] = useAuthState(auth)
     const [activeUserloading, setActiveUserloading] = useState(true);
     const [activeUser, setActiveUser] = useState<User | null>(null);
  

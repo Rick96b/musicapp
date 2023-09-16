@@ -5,10 +5,11 @@ import { Track, trackTypes } from 'entities/track';
 import { ToggleTrack } from 'features/toggle-track';
 
 interface TracksListProps {
-    tracksData: trackTypes.TrackType[]
+    tracksData: trackTypes.TrackType[] | null
 }
 
 const TracksList: React.FC<TracksListProps> = ({tracksData}) => {
+  if(!tracksData) return <></>
   return (
     <ul className={styles.trackList}>
       {tracksData.map(track => 
